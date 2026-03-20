@@ -29,6 +29,7 @@ export default function InboxScreen() {
         <h1 className="title-page">Taskbox</h1>
       </nav>
       <TaskList />
+      <span>Change!</span>
     </div>
   );
 }
