@@ -20,7 +20,7 @@ export default function TaskList() {
   const { status } = useSelector((state: RootState) => state.taskbox);
   const dispatch = useDispatch<AppDispatch>();
   const pinTask = (value: string) => {
-    dispatch(updateTaskState({ id: value, newTaskState: "TASK_ARCHIVED" }));
+    dispatch(updateTaskState({ id: value, newTaskState: "TASK_PINNED" }));
   };
   const archiveTask = (value: string) => {
     dispatch(updateTaskState({ id: value, newTaskState: "TASK_ARCHIVED" }));
@@ -36,7 +36,7 @@ export default function TaskList() {
 
   if (status === "loading") {
     return (
-      <div className="list-items">
+      <div className="list-items" data-testid="loading" key="loading">
         {LoadingRow}
         {LoadingRow}
         {LoadingRow}

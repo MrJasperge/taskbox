@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { waitFor, waitForElementToBeRemoved } from "storybook/test";
 import { Provider } from "react-redux";
 import { http, HttpResponse } from "msw";
 
@@ -25,6 +26,13 @@ export const Default: Story = {
         }),
       ],
     },
+  },
+  play: async ({ canvas, userEvent }) => {
+    await waitForElementToBeRemoved(await canvas.findByTestId("loading"));
+    await waitFor(async () => {
+      await userEvent.click(canvas.getByLabelText("pinTask-1"));
+      await userEvent.click(canvas.getByLabelText("pinTask-3"));
+    });
   },
 };
 
