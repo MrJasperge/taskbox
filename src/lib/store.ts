@@ -70,11 +70,14 @@ const TasksSlice = createSlice({
 
 export const { updateTaskState } = TasksSlice.actions;
 
-const store = configureStore({
-  reducer: {
-    taskbox: TasksSlice.reducer,
-  },
-});
+const makeStore = () =>
+  configureStore({
+    reducer: {
+      taskbox: TasksSlice.reducer,
+    },
+  });
+
+const store = makeStore();
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
