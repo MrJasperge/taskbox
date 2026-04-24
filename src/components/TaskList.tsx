@@ -12,15 +12,15 @@ export default function TaskList() {
       ...state.taskbox.tasks.filter((task) => task.state === "TASK_PINNED"),
       ...state.taskbox.tasks.filter((task) => task.state !== "TASK_PINNED"),
     ];
-    const filteredTasks = tasksInOrder.filter(
-      (task) => task.state === "TASK_INBOX" || task.state === "TASK_PINNED",
-    );
-    return filteredTasks;
+    return tasksInOrder;
   });
   const { status } = useSelector((state: RootState) => state.taskbox);
   const dispatch = useDispatch<AppDispatch>();
   const pinTask = (value: string) => {
-    dispatch(updateTaskState({ id: value, newTaskState: "TASK_PINNED" }));
+    const task = tasks.find((task) => task.id === value);
+    const newState =
+      task?.state === "TASK_PINNED" ? "TASK_INBOX" : "TASK_PINNED";
+    dispatch(updateTaskState({ id: value, newTaskState: newState }));
   };
   const archiveTask = (value: string) => {
     dispatch(updateTaskState({ id: value, newTaskState: "TASK_ARCHIVED" }));
