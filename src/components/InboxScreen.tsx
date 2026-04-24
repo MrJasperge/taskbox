@@ -17,8 +17,8 @@ export default function InboxScreen() {
       <div className="page lists-show">
         <div className="wrapper-message">
           <span className="icon-face-sad" />
-          <p className="title-message">Ow nohw :(</p>
-          <p className="subtitle-message">Somwethwing wwent wrowng.. Sowwy</p>
+          <p className="title-message">Nooooooooo</p>
+          <p className="subtitle-message">That's impossibleeeee</p>
         </div>
       </div>
     );
